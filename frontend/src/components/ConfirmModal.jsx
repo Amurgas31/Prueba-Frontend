@@ -1,13 +1,10 @@
-// ConfirmModal.jsx muestra un modal de confirmación para acciones como eliminar un producto.
-import { useRef, useEffect } from 'react' // useRef se usa para referencia al overlay, useEffect para escuchar teclas.
+import { useRef, useEffect } from 'react'
 
 const ConfirmModal = ({ title, message, onConfirm, onCancel, isOpen = false, isDangerous = false }) => {
-  // overlayRef apunta al fondo del modal para detectar clicks fuera del contenido.
   const overlayRef = useRef(null)
 
   useEffect(() => {
     const onKey = (e) => {
-      // Cierra el modal si el usuario presiona Escape.
       if (e.key === 'Escape') onCancel && onCancel()
     }
 
@@ -19,13 +16,12 @@ const ConfirmModal = ({ title, message, onConfirm, onCancel, isOpen = false, isD
   }, [isOpen, onCancel])
 
   const handleOverlayClick = (e) => {
-    // Si el usuario hace clic en el fondo y no en el contenido, cierra el modal.
     if (e.target === overlayRef.current) {
       onCancel && onCancel()
     }
   }
 
-  if (!isOpen) return null // No renderiza nada si el modal no está abierto.
+  if (!isOpen) return null 
 
   return (
     <div
