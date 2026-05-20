@@ -80,8 +80,9 @@ const Posts = () => {
         if (!response.ok) {
           throw new Error('Error al cargar los usuarios')
         }
-
         const data = await response.json()
+        const initialPosts = data.map((post) => ({ ...post, source: 'api' }))
+        localStorage.setItem('usersid', JSON.stringify(initialPosts))
         setUsers(data)
       } catch (err) {
         console.warn(err)
@@ -212,7 +213,7 @@ const Posts = () => {
         {/* Encabezado Principal */}
         <header className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8 bg-white p-6 rounded-xl shadow-sm border border-slate-100">
           <div>
-            <h1 className="text-2xl font-bold text-teal-600">Catálogo de Publicaciones</h1>
+            <h1 className="text-2xl font-bold text-teal-600">Publicaciones</h1>
             <p className="text-sm text-slate-500 font-medium">Gestión Profesional de Publicaciones</p>
           </div>
           <div className="flex items-center gap-3 w-full sm:w-auto justify-end">
@@ -241,7 +242,7 @@ const Posts = () => {
             type="text"
             value={searchTerm}
             onChange={handleSearchChange}
-            placeholder="Buscar por título o contenido..."
+            placeholder="Buscar por título, ID de usuario o contenido..."
             className="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-slate-900 text-sm outline-none shadow-sm focus:border-teal-500 focus:ring-2 focus:ring-teal-100 transition-all"
           />
         </div>
@@ -318,8 +319,8 @@ const Posts = () => {
                 <table className="w-full text-left border-collapse">
                   <thead className="bg-slate-50 text-slate-500 text-xs uppercase tracking-wider border-b border-slate-100">
                     <tr>
-                      <th className="p-4 font-bold max-w-[280px]">Título / ID User</th>
-                      <th className="p-8 font-bold max-w-[350px]">Contenido</th>
+                      <th className="p-4 font-bold max-w-70">Título / ID User</th>
+                      <th className="p-8 font-bold max-w-87.5">Contenido</th>
                       <th className="p-4 font-bold text-right"></th>
                       <th className="p-4 font-bold text-center">Acciones</th>
                     </tr>
@@ -329,11 +330,11 @@ const Posts = () => {
                       <tr key={post.id} className="hover:bg-teal-50/20 transition-colors">
                         {/* Título y User ID */}
                         <td className="p-4 align-middle">
-                          <div className="font-bold text-slate-800 line-clamp-1 max-w-[260px]">{post.title}</div>
+                          <div className="font-bold text-slate-800 line-clamp-1 max-w-85">{post.title}</div>
                           <div className="text-xs text-teal-600 font-semibold mt-0.5"> ID USER: {post.userId}</div>
                         </td>
                         {/* Contenido con límite de líneas */}
-                        <td className="p-4 align-middle text-slate-500 max-w-[350px]">
+                        <td className="p-4 align-middle text-slate-500 max-w-87.5">
                           <p className="line-clamp-2 leading-relaxed" title={post.body}>
                             {post.body}
                           </p>

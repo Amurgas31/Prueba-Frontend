@@ -90,7 +90,7 @@ export default function Register() {
               </label>
               <input 
                 type="text" 
-                placeholder="Ej: Astrid Murgas" 
+                placeholder="Ej: John Pepito de la Cruz" 
                 required
                 className="w-full border border-gray-300 p-3 rounded-xl text-gray-900 focus:ring-2 focus:ring-teal-400 outline-none transition-all placeholder-gray-400 bg-white text-sm" 
                 onChange={(e) => setFormData({...formData, name: e.target.value})}

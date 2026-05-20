@@ -106,7 +106,7 @@ const PostsForm = ({
               value={form.body}
               onChange={handleChange}
               placeholder="Escribe el contenido de la publicación..."
-              className="w-full rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-slate-900 placeholder-slate-400 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-100 transition-all min-h-[100px]"
+              className="w-full rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-slate-900 placeholder-slate-400 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-100 transition-all min-h-25"
               rows={3}
             />
           </div>

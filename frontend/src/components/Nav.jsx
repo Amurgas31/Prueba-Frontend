@@ -15,7 +15,7 @@ const Nav = () => {
   return (
     <nav className="bg-teal-600 text-white shadow-md">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-        <div className="text-lg font-bold">Las Publicaciones</div>
+        <div className="text-lg font-bold">The-Posts</div>
 
         <div className="flex items-center space-x-6">
           <ul className="flex space-x-4">
